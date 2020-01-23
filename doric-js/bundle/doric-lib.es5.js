@@ -1416,7 +1416,19 @@ var RotationAnimation = /** @class */ (function (_super) {
             fromValue: 1,
             toValue: 1,
         };
+        _this.rotationXChaneable = {
+            key: "rotationX",
+            fromValue: 1,
+            toValue: 1,
+        };
+        _this.rotationYChaneable = {
+            key: "rotationY",
+            fromValue: 1,
+            toValue: 1,
+        };
         _this.changeables.set("rotation", _this.rotationChaneable);
+        _this.changeables.set("rotationX", _this.rotationXChaneable);
+        _this.changeables.set("rotationY", _this.rotationYChaneable);
         return _this;
     }
     Object.defineProperty(RotationAnimation.prototype, "fromRotation", {
@@ -1435,6 +1447,46 @@ var RotationAnimation = /** @class */ (function (_super) {
         },
         set: function (v) {
             this.rotationChaneable.toValue = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RotationAnimation.prototype, "fromRotationX", {
+        get: function () {
+            return this.rotationXChaneable.fromValue;
+        },
+        set: function (v) {
+            this.rotationXChaneable.fromValue = v;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RotationAnimation.prototype, "toRotationX", {
+        get: function () {
+            return this.rotationXChaneable.toValue;
+        },
+        set: function (v) {
+            this.rotationXChaneable.toValue;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RotationAnimation.prototype, "fromRotationY", {
+        get: function () {
+            return this.rotationYChaneable.fromValue;
+        },
+        set: function (v) {
+            this.rotationYChaneable.fromValue;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RotationAnimation.prototype, "toRotationY", {
+        get: function () {
+            return this.rotationYChaneable.toValue;
+        },
+        set: function (v) {
+            this.rotationYChaneable.toValue;
         },
         enumerable: true,
         configurable: true

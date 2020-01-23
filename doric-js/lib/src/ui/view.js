@@ -261,6 +261,14 @@ __decorate([
     Property,
     __metadata("design:type", Number)
 ], View.prototype, "rotation", void 0);
+__decorate([
+    Property,
+    __metadata("design:type", Number)
+], View.prototype, "rotationX", void 0);
+__decorate([
+    Property,
+    __metadata("design:type", Number)
+], View.prototype, "rotationY", void 0);
 export class Superview extends View {
     subviewById(id) {
         for (let v of this.allSubviews()) {

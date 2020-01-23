@@ -1835,6 +1835,14 @@ __decorate([
     Property,
     __metadata("design:type", Number)
 ], View.prototype, "rotation", void 0);
+__decorate([
+    Property,
+    __metadata("design:type", Number)
+], View.prototype, "rotationX", void 0);
+__decorate([
+    Property,
+    __metadata("design:type", Number)
+], View.prototype, "rotationY", void 0);
 class Superview extends View {
     subviewById(id) {
         for (let v of this.allSubviews()) {
@@ -2492,7 +2500,19 @@ class RotationAnimation extends Animation {
             fromValue: 1,
             toValue: 1,
         };
+        this.rotationXChaneable = {
+            key: "rotationX",
+            fromValue: 1,
+            toValue: 1,
+        };
+        this.rotationYChaneable = {
+            key: "rotationY",
+            fromValue: 1,
+            toValue: 1,
+        };
         this.changeables.set("rotation", this.rotationChaneable);
+        this.changeables.set("rotationX", this.rotationXChaneable);
+        this.changeables.set("rotationY", this.rotationYChaneable);
     }
     set fromRotation(v) {
         this.rotationChaneable.fromValue = v;
@@ -2505,6 +2525,30 @@ class RotationAnimation extends Animation {
     }
     get toRotation() {
         return this.rotationChaneable.toValue;
+    }
+    set fromRotationX(v) {
+        this.rotationXChaneable.fromValue = v;
+    }
+    get fromRotationX() {
+        return this.rotationXChaneable.fromValue;
+    }
+    set toRotationX(v) {
+        this.rotationXChaneable.toValue;
+    }
+    get toRotationX() {
+        return this.rotationXChaneable.toValue;
+    }
+    set fromRotationY(v) {
+        this.rotationYChaneable.fromValue;
+    }
+    get fromRotationY() {
+        return this.rotationYChaneable.fromValue;
+    }
+    set toRotationY(v) {
+        this.rotationYChaneable.toValue;
+    }
+    get toRotationY() {
+        return this.rotationYChaneable.toValue;
     }
 }
 class AnimationSet {

@@ -166,6 +166,14 @@ declare module 'doric/lib/src/ui/view' {
                 * rotation*PI
                 */
             rotation?: number;
+            /**
+                * rotation X axis * PI
+                */
+            rotationX?: number;
+            /**
+                * rotation Y axis * PI
+                */
+            rotationY?: number;
     }
     export type NativeViewModel = {
             id: string;
@@ -252,6 +260,8 @@ declare module 'doric/lib/src/ui/view' {
             pivotX?: number;
             pivotY?: number;
             rotation?: number;
+            rotationX?: number;
+            rotationY?: number;
             /**----------transform----------*/
             doAnimation(context: BridgeContext, animation: IAnimation): Promise<void>;
     }
@@ -292,7 +302,7 @@ declare module 'doric/lib/src/ui/panel' {
 
 declare module 'doric/lib/src/ui/animation' {
     import { Modeling, Model } from "doric/lib/src/util/types";
-    export type AnimatedKey = "translationX" | "translationY" | "scaleX" | "scaleY" | "rotation" | "pivotX" | "pivotY";
+    export type AnimatedKey = "translationX" | "translationY" | "scaleX" | "scaleY" | "rotation" | "rotationX" | "rotationY" | "pivotX" | "pivotY";
     export enum RepeatMode {
             RESTART = 1,
             REVERSE = 2
@@ -399,6 +409,14 @@ declare module 'doric/lib/src/ui/animation' {
             get fromRotation(): number;
             set toRotation(v: number);
             get toRotation(): number;
+            set fromRotationX(v: number);
+            get fromRotationX(): number;
+            set toRotationX(v: number);
+            get toRotationX(): number;
+            set fromRotationY(v: number);
+            get fromRotationY(): number;
+            set toRotationY(v: number);
+            get toRotationY(): number;
     }
     export class AnimationSet implements IAnimation {
             _duration: number;

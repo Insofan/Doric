@@ -56,6 +56,14 @@ export interface IView {
      * rotation*PI
      */
     rotation?: number;
+    /**
+     * rotation X axis * PI
+     */
+    rotationX?: number;
+    /**
+     * rotation Y axis * PI
+     */
+    rotationY?: number;
 }
 export declare type NativeViewModel = {
     id: string;
@@ -146,6 +154,8 @@ export declare abstract class View implements Modeling, IView {
     pivotX?: number;
     pivotY?: number;
     rotation?: number;
+    rotationX?: number;
+    rotationY?: number;
     /**----------transform----------*/
     doAnimation(context: BridgeContext, animation: IAnimation): Promise<void>;
 }
