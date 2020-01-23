@@ -67,6 +67,14 @@ export interface IView {
      * rotation*PI
      */
     rotation?: number
+    /**
+     * rotation X axis * PI
+     */
+    rotationX?: number
+    /**
+     * rotation Y axis * PI
+     */
+    rotationY?: number
     /**----------transform----------*/
 }
 
@@ -328,6 +336,12 @@ export abstract class View implements Modeling, IView {
 
     @Property
     rotation?: number
+
+    @Property
+    rotationX?: number
+
+    @Property
+    rotationY?: number
     /**----------transform----------*/
 
     doAnimation(context: BridgeContext, animation: IAnimation) {
