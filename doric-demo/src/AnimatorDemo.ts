@@ -4,7 +4,7 @@ import { title, colors, box } from "./utils";
 function thisLabel(str: string) {
     return text({
         text: str,
-        width: 60,
+        width: 70,
         height: 50,
         backgroundColor: colors[0],
         textSize: 15,
@@ -122,6 +122,34 @@ class AnimatorDemo extends Panel {
                                                     view.rotation += 0.5
                                                 } else {
                                                     view.rotation = 0.5
+                                                }
+                                            },
+                                            duration: 1000,
+                                        });
+                                    }
+                                }),
+                                thisLabel('RotationX').apply({
+                                    onClick: () => {
+                                        animate(context)({
+                                            animations: () => {
+                                                if (view.rotationX) {
+                                                    view.rotationX += 0.5
+                                                } else {
+                                                    view.rotationX = 0.5
+                                                }
+                                            },
+                                            duration: 1000,
+                                        });
+                                    }
+                                }),
+                                thisLabel('RotationY').apply({
+                                    onClick: () => {
+                                        animate(context)({
+                                            animations: () => {
+                                                if (view.rotationY) {
+                                                    view.rotationY += 0.5
+                                                } else {
+                                                    view.rotationY = 0.5
                                                 }
                                             },
                                             duration: 1000,
