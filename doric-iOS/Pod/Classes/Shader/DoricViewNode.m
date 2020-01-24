@@ -101,6 +101,8 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
 @property(nonatomic, copy) NSNumber *scaleX;
 @property(nonatomic, copy) NSNumber *scaleY;
 @property(nonatomic, copy) NSNumber *rotation;
+@property(nonatomic, copy) NSNumber *rotationX;
+@property(nonatomic, copy) NSNumber *rotationY;
 @property(nonatomic, copy) NSNumber *pivotX;
 @property(nonatomic, copy) NSNumber *pivotY;
 @end
@@ -151,6 +153,12 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
     }
     if (self.rotation) {
         transform = CGAffineTransformRotate(transform, (self.rotation.floatValue ?: 0) * M_PI);
+    }
+    if (self.rotationX) {
+        transform = CGAffineTransformRotate(transform, (self.rotationX.floatValue ?: 0) * M_PI);
+    }
+    if (self.rotationY) {
+        transform = CGAffineTransformRotate(transform, (self.rotationY.floatValue ?: 0) * M_PI);
     }
     if (!CGAffineTransformEqualToTransform(transform, self.view.transform)) {
         self.view.transform = transform;
@@ -249,6 +257,10 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
         self.pivotY = prop;
     } else if ([name isEqualToString:@"rotation"]) {
         self.rotation = prop;
+    } else if ([name isEqualToString:@"rotationX"]) {
+        self.rotationX = prop;
+    } else if ([name isEqualToString:@"rotationY"]) {
+        self.rotationY = prop;
     } else if ([name isEqualToString:@"padding"]) {
         DoricPadding padding;
         padding.left = padding.right = padding.top = padding.bottom = 0;
@@ -370,6 +382,12 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
     }
     if (self.rotation) {
         dictionary[@"rotation"] = self.rotation;
+    }
+    if (self.rotationX) {
+        dictionary[@"rotationX"] = self.rotationX;
+    }
+    if (self.rotationY) {
+        dictionary[@"rotationY"] = self.rotationY;
     }
     return dictionary;
 }
@@ -586,6 +604,12 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
     if ([@"rotation" isEqualToString:key]) {
         return self.rotation;
     }
+    if ([@"rotationX" isEqualToString:key]) {
+        return self.rotationX;
+    }
+    if ([@"rotationY" isEqualToString:key]) {
+        return self.rotationY;
+    }
     return nil;
 }
 
@@ -600,6 +624,10 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
         self.scaleY = value;
     } else if ([@"rotation" isEqualToString:key]) {
         self.rotation = value;
+    } else if ([@"rotationX" isEqualToString:key]) {
+        self.rotationX = value;
+    } else if ([@"rotationY" isEqualToString:key]) {
+        self.rotationY = value;
     }
 }
 
@@ -615,6 +643,14 @@ CGPathRef DoricCreateRoundedRectPath(CGRect bounds,
         animation.fromValue = params[@"fromValue"];
         animation.toValue = params[@"toValue"];
     } else if ([@"rotation" isEqualToString:key]) {
+        animation.keyPath = @"transform.rotation.z";
+        animation.fromValue = @([params[@"fromValue"] floatValue] * M_PI);
+        animation.toValue = @([params[@"toValue"] floatValue] * M_PI);
+    } else if ([@"rotationX" isEqualToString:key]) {
+        animation.keyPath = @"transform.rotation.z";
+        animation.fromValue = @([params[@"fromValue"] floatValue] * M_PI);
+        animation.toValue = @([params[@"toValue"] floatValue] * M_PI);
+    } else if ([@"rotationY" isEqualToString:key]) {
         animation.keyPath = @"transform.rotation.z";
         animation.fromValue = @([params[@"fromValue"] floatValue] * M_PI);
         animation.toValue = @([params[@"toValue"] floatValue] * M_PI);
